@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-sm-6"><img src="assets/images/hunmap.jpg" alt="image"></div>
+  <div class="col-sm-6">
+    <div *ngFor="let g of graphNodes1">
+      <span *ngIf="g.distance > 0 && g.predecessor">You need {{ timeConvert(g.distance) }} from {{ this.node1.name }}
+        <span *ngIf="g.predecessor.predecessor.name != this.node1.name">via
+          <span *ngIf="g.predecessor.predecessor.name != g.predecessor.name">{{ g.predecessor.predecessor.name }},
+          </span>{{ g.predecessor.name }}
+        </span> to {{ g.name}}.
+      </span></div>
+  </div>
+</div>
+
+
+
+

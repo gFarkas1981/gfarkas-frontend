@@ -1,0 +1,12 @@
+<form (ngSubmit)="submit()" [formGroup]="form">
+
+  <label for="number1">Number 1:</label>
+  <input formControlName="number1" id="number1" type="number">
+  <label for="number2">Number 2:</label>
+  <input formControlName="number2" id="number2" type="number">
+
+  <button>Submit</button>
+</form>
+
+<h3 *ngIf="result">The result is {{result}}</h3>
+

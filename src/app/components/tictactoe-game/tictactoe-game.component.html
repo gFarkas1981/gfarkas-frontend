@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-block text-xs-left">
+        <div *ngIf="((!tttGameModel.actualname || tttGameModel.beforeFirstStep) && (!tttGameModel.gameOver))">
+          Hi, {{player1Name}}! Please select an empty cell!
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-block text-xs-left">
+        <div *ngIf="tttGameModel.actualname && (!tttGameModel.beforeFirstStep)">{{tttGameModel.actualname}}, please
+          select an empty cell!
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-block text-xs-left">
+        <div *ngIf="tttGameModel.gameOver">{{tttGameModel.message}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+
+        <canvas #canvas (mouseup)="fireEvent($event)" id="tic-tac-toe-board"></canvas>
+
+      <div *ngIf="player2Name" class="row col-md-3">
+        <div class="card card-block text-xs-left">
+          <span *ngIf="tttGameModel">{{player1Name}}'s score: {{tttGameModel.p1Score}}</span>
+          <span *ngIf="tttGameModel">{{player2Name}}'s score: {{tttGameModel.p2Score}}</span>
+        </div>
+      </div>
+      <div *ngIf="!player2Name" class="row col-md-3">
+        <div class="card card-block text-xs-left">
+          <span *ngIf="tttGameModel.p1Score != 0 || tttGameModel.p2Score != 0">{{player1Name}}'s score: {{tttGameModel.p1Score}}</span>
+          <span *ngIf="tttGameModel.p1Score != 0 || tttGameModel.p2Score != 0">CPU's score: {{tttGameModel.p2Score}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="tttGameModel.gameOver" class="row">
+    <div class="col-md-12">
+      <div class="card card-block text-xs-left">
+        <div>Do you want to play another game?
+          <button (click)="newGame()" class="btn btn-success" type="button">YES</button>
+          <a class="btn btn-danger" href="#" role="button">NO</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

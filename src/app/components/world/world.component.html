@@ -1,0 +1,106 @@
+<form (ngSubmit)="cCodeSubmit()" [formGroup]="form">
+  <select class="custom-select" formControlName="ccode">
+    <option disabled value="">Choose country code</option>
+    <option *ngFor="let country of countries;let i = index" [value]="country.code">{{ i }}. {{ country.code }}</option>
+  </select>
+
+  <button type="submit">SELECT * FROM country WHERE code = '?'</button>
+</form>
+
+<form (ngSubmit)="populationSubmit()" [formGroup]="formPop">
+  <label for="population1">Population greater than or equal to:</label>
+  <input formControlName="population1"
+         id="population1"
+         type="number">
+  <br/>
+  <label for="population2">Population smaller than or equal to: </label>
+  <input formControlName="population2"
+         id="population2"
+         type="number">
+  <br/>
+  <button type="submit">SELECT * FROM country WHERE population >= '?' and population <= '?'</button>
+</form>
+
+<table *ngIf="oneRow" class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th scope="col">Code</th>
+    <th scope="col">Name</th>
+    <th scope="col">Continent</th>
+    <th scope="col">Region</th>
+    <th scope="col">Surface area</th>
+    <th scope="col">Year of independence</th>
+    <th scope="col">Population</th>
+    <th scope="col">Life expectancy</th>
+    <th scope="col">GNP</th>
+    <th scope="col">GNP old</th>
+    <th scope="col">Local name</th>
+    <th scope="col">Government form</th>
+    <th scope="col">Head of state</th>
+    <th scope="col">Capital</th>
+    <th scope="col">Code2</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>{{country.code}}</td>
+    <td>{{country.name}}</td>
+    <td>{{country.continent}}</td>
+    <td>{{country.region}}</td>
+    <td>{{country.surfaceArea}}</td>
+    <td>{{country.indepYear}}</td>
+    <td>{{country.population}}</td>
+    <td>{{country.lifeExpectancy}}</td>
+    <td>{{country.gnp}}</td>
+    <td>{{country.gnpOld}}</td>
+    <td>{{country.localName}}</td>
+    <td>{{country.governmentForm}}</td>
+    <td>{{country.headOfState}}</td>
+    <td>{{country.capital}}</td>
+    <td>{{country.code2}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<table *ngIf="!oneRow" class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th scope="col">Code</th>
+    <th scope="col">Name</th>
+    <th scope="col">Continent</th>
+    <th scope="col">Region</th>
+    <th scope="col">Surface area</th>
+    <th scope="col">Year of independence</th>
+    <th scope="col">Population</th>
+    <th scope="col">Life expectancy</th>
+    <th scope="col">GNP</th>
+    <th scope="col">GNP old</th>
+    <th scope="col">Local name</th>
+    <th scope="col">Government form</th>
+    <th scope="col">Head of state</th>
+    <th scope="col">Capital</th>
+    <th scope="col">Code2</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let c of countriesByPopulation;let i = index">
+    <td>{{c.code}}</td>
+    <td>{{c.name}}</td>
+    <td>{{c.continent}}</td>
+    <td>{{c.region}}</td>
+    <td>{{c.surfaceArea}}</td>
+    <td>{{c.indepYear}}</td>
+    <td>{{c.population}}</td>
+    <td>{{c.lifeExpectancy}}</td>
+    <td>{{c.gnp}}</td>
+    <td>{{c.gnpOld}}</td>
+    <td>{{c.localName}}</td>
+    <td>{{c.governmentForm}}</td>
+    <td>{{c.headOfState}}</td>
+    <td>{{c.capital}}</td>
+    <td>{{c.code2}}</td>
+  </tr>
+  </tbody>
+</table>
+
+

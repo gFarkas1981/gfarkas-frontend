@@ -1,0 +1,151 @@
+<div class="container">
+  <form [formGroup]="form">
+    <table class="table table-bordered table-sm table-responsive table-striped" data-sort-stable="true"
+           data-toggle="table"
+           id="inputTable">
+      <thead>
+      <tr>
+        <th data-sortable="true">v</th>
+        <th data-sortable="true">A</th>
+        <th data-sortable="true">B</th>
+        <th data-sortable="true">C</th>
+        <th data-sortable="false">D</th>
+        <th data-sortable="false">E</th>
+        <th data-sortable="false">F</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>A</td>
+        <td><input class="red" name="a-a" readonly size="3" type="text" value="0"></td>
+        <td><input (keypress)="numberOnly($event)" formControlName="ab" maxlength="3" name="a-b" size="3" type="text">
+        </td>
+        <td><input (keypress)="numberOnly($event)" formControlName="ac" maxlength="3" name="a-c" size="3" type="text">
+        </td>
+        <td><input (keypress)="numberOnly($event)" formControlName="ad" maxlength="3" name="a-d" size="3" type="text">
+        </td>
+        <td><input (keypress)="numberOnly($event)" formControlName="ae" maxlength="3" name="a-e" size="3" type="text">
+        </td>
+        <td><input (keypress)="numberOnly($event)" formControlName="af" maxlength="3" name="a-f" size="3" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td><input class="red" name="a-b" readonly size="3" type="text" value="{{ dijkstra.atob }}"></td>
+        <td><input class="red" name="b-b" readonly size="3" type="text" value="0"></td>
+        <td><input (keypress)="numberOnly($event)" formControlName="bc" maxlength="3" name="b-c" size="3" type="text">
+        </td>
+        <td><input (keypress)="numberOnly($event)" formControlName="bd" maxlength="3" name="b-d" size="3" type="text">
+        </td>
+        <td><input (keypress)="numberOnly($event)" formControlName="be" maxlength="3" name="b-e" size="3" type="text">
+        </td>
+        <td><input (keypress)="numberOnly($event)" formControlName="bf" maxlength="3" name="b-f" size="3" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.atoc }}"></td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.btoc }}"></td>
+        <td><input class="red" name="c-c" readonly size="3" type="text" value="0"></td>
+        <td><input (keypress)="numberOnly($event)" formControlName="cd" maxlength="3" name="c-d" size="3" type="text">
+        </td>
+        <td><input (keypress)="numberOnly($event)" formControlName="ce" maxlength="3" name="c-e" size="3" type="text">
+        </td>
+        <td><input (keypress)="numberOnly($event)" formControlName="cf" maxlength="3" name="c-f" size="3" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.atod }}"></td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.btod }}"></td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.ctod }}"></td>
+        <td><input class="red" name="d-d" readonly size="3" type="text" value="0"></td>
+        <td><input (keypress)="numberOnly($event)" formControlName="de" maxlength="3" name="d-e" size="3" type="text">
+        </td>
+        <td><input (keypress)="numberOnly($event)" formControlName="df" maxlength="3" name="d-f" size="3" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>E</td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.atoe }}"></td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.btoe }}"></td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.ctoe }}"></td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.dtoe }}"></td>
+        <td><input class="red" name="e-e" readonly size="3" type="text" value="0"></td>
+        <td><input (keypress)="numberOnly($event)" formControlName="ef" maxlength="3" name="e-f" size="3" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>F</td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.atof }}"></td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.btof }}"></td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.ctof }}"></td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.dtof }}"></td>
+        <td><input class="red" readonly size="3" type="text" value="{{ dijkstra.etof }}"></td>
+        <td><input class="red" name="f-f" readonly size="3" type="text" value="0"></td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+
+<table class="table table-bordered table-sm table-responsive table-striped" data-sort-stable="true"
+       data-toggle="table"
+       id="outPutTable">
+  <thead>
+  <tr>
+    <th data-sortable="true">Iteration</th>
+    <th data-sortable="true">UnSettled</th>
+    <th data-sortable="true">Settled</th>
+    <th data-sortable="true">EvaluationNode</th>
+    <th data-sortable="true">A</th>
+    <th data-sortable="true">B</th>
+    <th data-sortable="true">C</th>
+    <th data-sortable="false">D</th>
+    <th data-sortable="false">E</th>
+    <th data-sortable="false">F</th>
+    <th data-sortable="false">pathDist</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>A</td>
+    <td>-</td>
+    <td>A</td>
+    <td><input class="red" name="a-a" readonly size="3" type="text" value="0"></td>
+    <td><input name="a-b" readonly size="3" type="text" value="{{ dijkstra.atob }}"></td>
+    <td><input name="a-c" readonly size="3" type="text" value="{{ dijkstra.atoc }}"></td>
+    <td><input name="a-d" readonly size="3" type="text" value="{{ dijkstra.atod }}"></td>
+    <td><input name="a-e" readonly size="3" type="text" value="{{ dijkstra.atoe }}"></td>
+    <td><input name="a-f" readonly size="3" type="text" value="{{ dijkstra.atof }}"></td>
+    <td><input name="a-f" readonly size="3" type="text" value="{{ dijkstra.pathDistance1 }}"></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>{{unsettledArray1.join(', ')}}</td>
+    <td>{{ settledArray1.join(', ') }}</td>
+    <td>{{ evaluationNode1 }}</td>
+    <td><input class="red" name="a-a" readonly size="3" type="text" value="0"></td>
+    <td><input name="a-b" readonly size="3" type="text" value="{{ dijkstra.atob }}"></td>
+    <td><input name="a-c" readonly size="3" type="text" value="{{ dijkstra.atoc }}"></td>
+    <td><input name="a-d" readonly size="3" type="text" value="{{ dijkstra.btod }}"></td>
+    <td><input name="a-e" readonly size="3" type="text" value="{{ dijkstra.btoe }}"></td>
+    <td><input name="a-f" readonly size="3" type="text" value="{{ dijkstra.btof }}"></td>
+    <td><input name="a-f" readonly size="3" type="text" value="{{ dijkstra.pathDistance2 }}"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>{{unsettledArray2.join(', ')}}</td>
+    <td>{{ settledArray2.join(', ') }}</td>
+    <td>{{ evaluationNode2 }}</td>
+    <td><input class="red" name="a-a" readonly size="3" type="text" value="0"></td>
+    <td><input name="a-b" readonly size="3" type="text" value="{{ dijkstra.atob }}"></td>
+    <td><input name="a-c" readonly size="3" type="text" value="{{ dijkstra.atoc }}"></td>
+    <td><input name="a-d" readonly size="3" type="text" value="{{ dijkstra.btod }}"></td>
+    <td><input name="a-e" readonly size="3" type="text" value="{{ dijkstra.btoe }}"></td>
+    <td><input name="a-f" readonly size="3" type="text" value="{{ dijkstra.btof }}"></td>
+    <td><input name="a-f" readonly size="3" type="text" value="{{ dijkstra.pathDistance2 }}"></td>
+  </tr>
+  </tbody>
+</table>
